@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MavenStudy | Cleftgou-Blog</title><meta name="author" content="Cleftgou"><meta name="copyright" content="Cleftgou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Maven 查看文件的结构（使用powershell命令）  Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权利。  安装最新的 PowerShell，了解新功能和改进！https:&#x2F;&#x2F;aka.ms&#x2F;PSWindows  PS C:\Users\bairimengchang&gt; cd d: PS D:\&gt; cd .\JAVA P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MavenStudy">
+<meta property="og:url" content="https://blog-demo-beige-five.vercel.app/2024/02/02/MavenStudy/index.html">
+<meta property="og:site_name" content="Cleftgou-Blog">
+<meta property="og:description" content="Maven 查看文件的结构（使用powershell命令）  Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权利。  安装最新的 PowerShell，了解新功能和改进！https:&#x2F;&#x2F;aka.ms&#x2F;PSWindows  PS C:\Users\bairimengchang&gt; cd d: PS D:\&gt; cd .\JAVA P">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-demo-beige-five.vercel.app/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png">
+<meta property="article:published_time" content="2024-02-02T10:07:00.000Z">
+<meta property="article:modified_time" content="2024-02-21T10:33:46.684Z">
+<meta property="article:author" content="Cleftgou">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-demo-beige-five.vercel.app/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog-demo-beige-five.vercel.app/2024/02/02/MavenStudy/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MavenStudy',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-02-21 18:33:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Cleftgou-Blog"><span class="site-name">Cleftgou-Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MavenStudy</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-02T10:07:00.000Z" title="发表于 2024-02-02 18:07:00">2024-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-21T10:33:46.684Z" title="更新于 2024-02-21 18:33:46">2024-02-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MavenStudy"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><ul>
+<li><p>查看文件的结构（使用powershell命令）</p>
+</li>
+<li><pre><code class="bash">Windows PowerShell
+版权所有（C） Microsoft Corporation。保留所有权利。
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+PS C:\Users\bairimengchang&gt; cd d:
+PS D:\&gt; cd .\JAVA
+PS D:\JAVA&gt; cd .\maven_work
+PS D:\JAVA\maven_work&gt; dir
+
+
+    目录: D:\JAVA\maven_work
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2024/1/31     17:47                HelloTest
+
+
+PS D:\JAVA\maven_work&gt; tree HelloTest
+卷 Data 的文件夹 PATH 列表
+卷序列号为 0416-BAA6
+D:\JAVA\MAVEN_WORK\HELLOTEST
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─niu
+    │  │          └─javatest
+    │  └─resources
+    └─test
+        ├─java
+        └─resources
+PS D:\JAVA\maven_work&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```xml</span><br><span class="line">  p24.如果各位同志们下载的tomcat10版本然后报错可以把这段复制一下到pom。xml中</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;jakarta.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jakarta.servlet.jsp-api&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.0.0&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;jakarta.servlet&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jakarta.servlet-api&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.0.0&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>在生成的classes文件夹下执行运行程序的命令</p>
+</li>
+<li><pre><code class="bash">D:\JAVA\maven_work\HelloTest\target\classes&gt;java com.niu.javatest.Hello
+HELLO Maven!
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Maven的中央仓库地址：[Maven Repository: Search/Browse/Explore (mvnrepository.com)](https://mvnrepository.com/)</span><br><span class="line"></span><br><span class="line">- 一段中央仓库某个jar包的pom.xml文件的信息</span><br><span class="line"></span><br><span class="line">- ```xml</span><br><span class="line">  &lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;8.0.33&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>对pom.xml信息的解释</p>
+</li>
+<li><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://maven.apche.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+
+&lt;!-- Maven模型的版本，固定是4.0 --&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;!-- 组织id，一般是公司域名的倒写（baidu.com写为com.baidu）可加项目名或者不加项目名 --&gt;
+
+&lt;!-- 以下三条是坐标，是项目的唯一标识 --&gt;
+&lt;groupId&gt;com.niu&lt;/groupId&gt;
+&lt;!-- 项目名，应该是唯一的 --&gt;
+&lt;artifactId&gt;ch01-maven&lt;/artifactId&gt;
+&lt;!-- 项目的版本号 --&gt;
+&lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+
+&lt;!-- 设置配置属性，比如jdk版本，处理乱码等等 --&gt;
+&lt;properties&gt;
+   &lt;java.version&gt;11&lt;/java.version&gt;
+   &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+   &lt;maven.compiler.source&gt;11&lt;/maven.compiler.source&gt;
+   &lt;maven.compiler.target&gt;11&lt;/maven.compiler.target&gt;
+&lt;/properties&gt;
+
+&lt;!-- 项目所依赖的其它jar文件，如果本地有就直接用，否则去网上下载 --&gt;
+&lt;!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 --&gt;
+&lt;dependencies&gt;
+   &lt;dependency&gt;
+      &lt;groupId&gt;com.alibaba.fastjson2&lt;/groupId&gt;
+      &lt;artifactId&gt;fastjson2&lt;/artifactId&gt;
+      &lt;version&gt;2.0.46&lt;/version&gt;
+   &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- maven的生命周期</span><br><span class="line"></span><br><span class="line">  - maven构建项目的过程：清理，编译，测试，报告，打包，安装，部署</span><br><span class="line"></span><br><span class="line">  - maven的命令：maven可以独立使用，通过命令，完成整个生命周期。（执行后一个命令会把前面的命令也执行了）</span><br><span class="line"></span><br><span class="line">    - mvn clean ：清理target目录</span><br><span class="line"></span><br><span class="line">    - mvn compile ：编译main/java</span><br><span class="line"></span><br><span class="line">    - mvn test-compile：编译test/java</span><br><span class="line"></span><br><span class="line">    - mvn test：测试（会生成一个目录surefire-report，保存测试结果）</span><br><span class="line"></span><br><span class="line">    - mvn package：打包主程序（会编译、编译测试、测试、并且按照pom.xml配置把主程序打包生成jar包或者war包）</span><br><span class="line"></span><br><span class="line">    - mvn install：安装主程序（会把本工程打包，并且按照本工程的坐标保存到本地仓库中）</span><br><span class="line"></span><br><span class="line">    - mvn deploy：部署主程序（会把本程序打包，按照本工程的坐标保存到本地库中，并且还会保存到私服仓库中，还会自动把项目部署到web容器中）</span><br><span class="line"></span><br><span class="line">    - 具体命令执行窗口演示：</span><br><span class="line"></span><br><span class="line">      - ```bash</span><br><span class="line">        Microsoft Windows [版本 10.0.22631.3085]</span><br><span class="line">        (c) Microsoft Corporation。保留所有权利。</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;dir</span><br><span class="line">         驱动器 D 中的卷是 Data</span><br><span class="line">         卷的序列号是 0416-BAA6</span><br><span class="line">        </span><br><span class="line">         D:\JAVA\maven_work\HelloTest 的目录</span><br><span class="line">        </span><br><span class="line">        2024/02/01  18:14    &lt;DIR&gt;          .</span><br><span class="line">        2024/01/31  18:05    &lt;DIR&gt;          ..</span><br><span class="line">        2024/02/01  17:51             1,392 pom.xml</span><br><span class="line">        2024/01/31  17:47    &lt;DIR&gt;          src</span><br><span class="line">        2024/02/01  18:23    &lt;DIR&gt;          target</span><br><span class="line">                       1 个文件          1,392 字节</span><br><span class="line">                       4 个目录 163,548,962,816 可用字节</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn clean</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- clean:3.2.0:clean (default-clean) @ ch01-maven ---</span><br><span class="line">        [INFO] Deleting D:\JAVA\maven_work\HelloTest\target</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  0.245 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:32:45+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn compile</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:resources (default-resources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 1 resource from src\main\resources to target\classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:compile (default-compile) @ ch01-maven ---</span><br><span class="line">        [INFO] Changes detected - recompiling the module! :source</span><br><span class="line">        [INFO] Compiling 1 source file with javac [debug target 11] to target\classes</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  0.742 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:32:57+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn test-compile</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:resources (default-resources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 1 resource from src\main\resources to target\classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:compile (default-compile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:testResources (default-testResources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 0 resource from src\test\resources to target\test-classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ch01-maven ---</span><br><span class="line">        [INFO] Changes detected - recompiling the module! :source</span><br><span class="line">        [INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  0.804 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:33:08+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn test</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:resources (default-resources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 1 resource from src\main\resources to target\classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:compile (default-compile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:testResources (default-testResources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 0 resource from src\test\resources to target\test-classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- surefire:3.2.2:test (default-test) @ ch01-maven ---</span><br><span class="line">        [INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO]  T E S T S</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO] Running com.niu.javatest.TestHello</span><br><span class="line">        maven测试方法执行了</span><br><span class="line">        maven测试方法2执行了</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s -- in com.niu.javatest.TestHello</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Results:</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  1.526 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:33:17+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn package</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:resources (default-resources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 1 resource from src\main\resources to target\classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:compile (default-compile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:testResources (default-testResources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 0 resource from src\test\resources to target\test-classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- surefire:3.2.2:test (default-test) @ ch01-maven ---</span><br><span class="line">        [INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO]  T E S T S</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO] Running com.niu.javatest.TestHello</span><br><span class="line">        maven测试方法执行了</span><br><span class="line">        maven测试方法2执行了</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.niu.javatest.TestHello</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Results:</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- jar:3.3.0:jar (default-jar) @ ch01-maven ---</span><br><span class="line">        [INFO] Building jar: D:\JAVA\maven_work\HelloTest\target\ch01-maven-1.0.0-SNAPSHOT.jar</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  1.733 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:33:28+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;mvn install</span><br><span class="line">        [INFO] Scanning for projects...</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------&lt; com.niu:ch01-maven &gt;-------------------------</span><br><span class="line">        [INFO] Building ch01-maven 1.0.0-SNAPSHOT</span><br><span class="line">        [INFO]   from pom.xml</span><br><span class="line">        [INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:resources (default-resources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 1 resource from src\main\resources to target\classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:compile (default-compile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- resources:3.3.1:testResources (default-testResources) @ ch01-maven ---</span><br><span class="line">        [INFO] Copying 0 resource from src\test\resources to target\test-classes</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ch01-maven ---</span><br><span class="line">        [INFO] Nothing to compile - all classes are up to date</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- surefire:3.2.2:test (default-test) @ ch01-maven ---</span><br><span class="line">        [INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO]  T E S T S</span><br><span class="line">        [INFO] -------------------------------------------------------</span><br><span class="line">        [INFO] Running com.niu.javatest.TestHello</span><br><span class="line">        maven测试方法执行了</span><br><span class="line">        maven测试方法2执行了</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in com.niu.javatest.TestHello</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Results:</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- jar:3.3.0:jar (default-jar) @ ch01-maven ---</span><br><span class="line">        [INFO]</span><br><span class="line">        [INFO] --- install:3.1.1:install (default-install) @ ch01-maven ---</span><br><span class="line">        [INFO] Installing D:\JAVA\maven_work\HelloTest\pom.xml to D:\JAVA\maven_work\maven_repository\com\niu\ch01-maven\1.0.0-SNAPSHOT\ch01-maven-1.0.0-SNAPSHOT.pom</span><br><span class="line">        [INFO] Installing D:\JAVA\maven_work\HelloTest\target\ch01-maven-1.0.0-SNAPSHOT.jar to D:\JAVA\maven_work\maven_repository\com\niu\ch01-maven\1.0.0-SNAPSHOT\ch01-maven-1.0.0-SNAPSHOT.jar</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] BUILD SUCCESS</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        [INFO] Total time:  1.742 s</span><br><span class="line">        [INFO] Finished at: 2024-02-01T18:34:05+08:00</span><br><span class="line">        [INFO] ------------------------------------------------------------------------</span><br><span class="line">        </span><br><span class="line">        D:\JAVA\maven_work\HelloTest&gt;</span><br></pre></td></tr></table></figure>
+
+- maven的插件：真正完成功能的是插件，插件就是一些jar文件（一些类）
+
+- 单元测试（测试方法）：使用junit框架（工具）。
+
+  - 测试内容：测试的是类中的方法，每一个方法都是独立测试的，方法是测试的基本单元，
+
+  - 在pom文件中加入下述依赖
+
+  - ```xml
+    &lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;
+    &lt;!-- junit单元测试的依赖 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.13.2&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在src/test/java目录下，创建测试程序</span><br><span class="line"></span><br><span class="line">  - 测试类的名称：Test+待测试的类名</span><br><span class="line"></span><br><span class="line">  - 测试方法的名称：test+方法名称</span><br><span class="line"></span><br><span class="line">  - 代码如下：</span><br><span class="line"></span><br><span class="line">    - ```java</span><br><span class="line">      package com.niu.javatest;</span><br><span class="line">      </span><br><span class="line">      import org.junit.Test;</span><br><span class="line">      import org.junit.Assert;</span><br><span class="line">      </span><br><span class="line">      public class TestHello &#123;</span><br><span class="line">          @Test</span><br><span class="line">          public void testAdd()&#123;</span><br><span class="line">              System.out.println(&quot;maven测试方法执行了&quot;);</span><br><span class="line">              Hello hello = new Hello();</span><br><span class="line">              int s = hello.add(10, 20);</span><br><span class="line">              //验证10+20是不是30，junit提供的方法，对比结果的</span><br><span class="line">              //assertEquals(期望值，实际值)，值相等就是正确的，不等就抛异常</span><br><span class="line">              Assert.assertEquals(30, s);</span><br><span class="line">          &#125;</span><br><span class="line">          @Test</span><br><span class="line">          public void testAdd2()&#123;</span><br><span class="line">              System.out.println(&quot;maven测试方法2执行了&quot;);</span><br><span class="line">              Hello hello = new Hello();</span><br><span class="line">              int s = hello.add(20, 20);</span><br><span class="line">              //验证20+20是不是40，junit提供的方法，对比结果的</span><br><span class="line">              //assertEquals(期望值，实际值)，值相等就是正确的，不等就抛异常</span><br><span class="line">              Assert.assertEquals(40, s);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>在idea中创建maven项目</p>
+</li>
+<li><pre><code>选择对应的maven原型的模板如下：
+javase项目：maven-archetype-quickstart
+javaweb项目：maven-archetype-webapp
+</code></pre>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog-demo-beige-five.vercel.app">Cleftgou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog-demo-beige-five.vercel.app/2024/02/02/MavenStudy/">https://blog-demo-beige-five.vercel.app/2024/02/02/MavenStudy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog-demo-beige-five.vercel.app" target="_blank">Cleftgou-Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/%E4%BA%AC%E9%98%BF%E5%B0%BC.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E4%BA%AC%E9%98%BF%E5%B0%BC.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/%E4%BA%AC%E9%98%BF%E5%B0%BC.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E4%BA%AC%E9%98%BF%E5%B0%BC.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/17/MyBatisStudy/" title="MyBatisStudy"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MyBatisStudy</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/25/JavaWebStudy/" title="JavaWebStudy"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaWebStudy</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Cleftgou</div><div class="author-info__description">个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Cleftgou"><i class="fab fa-github"></i><span>欢迎访问我的GitHub主页!</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Cleftgou" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1209949732@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://twitter.com/your_twitter_handle" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #1da1f2;"></i></a><a class="social-icon" href="https://www.linkedin.com/in/your_linkedin_profile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0a66c2;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><center>主域名：<a href="https://blog-demo-beige-five.vercel.app/"><font color="#5ea6e5">www.cleftgou.com</font></a><br><a href="mailto:cleftgou@gmail.com">📬：<font color="#a591e0">cleftgou@gmail.com</font></a><br></center></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Maven"><span class="toc-text">Maven</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/02/17/MyBatisStudy/" title="MyBatisStudy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatisStudy"/></a><div class="content"><a class="title" href="/2024/02/17/MyBatisStudy/" title="MyBatisStudy">MyBatisStudy</a><time datetime="2024-02-17T03:55:41.000Z" title="发表于 2024-02-17 11:55:41">2024-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/02/MavenStudy/" title="MavenStudy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MavenStudy"/></a><div class="content"><a class="title" href="/2024/02/02/MavenStudy/" title="MavenStudy">MavenStudy</a><time datetime="2024-02-02T10:07:00.000Z" title="发表于 2024-02-02 18:07:00">2024-02-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/25/JavaWebStudy/" title="JavaWebStudy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaWebStudy"/></a><div class="content"><a class="title" href="/2023/12/25/JavaWebStudy/" title="JavaWebStudy">JavaWebStudy</a><time datetime="2023-12-25T13:07:00.000Z" title="发表于 2023-12-25 21:07:00">2023-12-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/images/%E6%B2%B9%E7%94%BB%E9%A3%8E2.png')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Cleftgou</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
